@@ -25,6 +25,7 @@
                             placeholder="Ваш ответ"    
                         >
                     </form>
+                    <button class="btn-miss" @click="submit()">Пропустить</button>
                     <div class="score">Балл: {{score}} из {{gameLvl}}</div>
                 </div>
             </div> 
@@ -790,7 +791,7 @@
                 submit() {
                     let enWord = this.ListOfWords_En[this.counter]
                     let ruWord = this.ListOfWords_Ru[this.counter]
-                    if (ruWord.includes(this.answer_ru.toLowerCase())) {
+                    if (ruWord.includes(this.answer_ru.toLowerCase()) && (this.answer_ru)) {
                         this.score += 1
                         this.counter += 1
                         this.answer_ru = ''
@@ -799,13 +800,13 @@
                     }
                     else {
                         this.showLose(ruWord)
-                        this.counter += 1
                     }
                 },
                 showLose(ruWord){
                     this.answer_ru = ''
                     this.falseAnswer = true
                     this.trueAnswer = false
+                    this.counter += 1
                     return alert(`Правильный ответ: ${ruWord}`)
                 },
                 start() {
