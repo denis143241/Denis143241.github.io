@@ -25,7 +25,7 @@
                             placeholder="Ваш ответ"    
                         >
                     </form>
-                    <button class="btn-miss" @click="submit()">Пропустить</button>
+                    <button class="btn-miss" @click="skip()">Пропустить</button>
                     <div class="score">Балл: {{score}} из {{gameLvl}}</div>
                 </div>
             </div> 
@@ -788,6 +788,10 @@
                         }
                     }
                 },
+                skip() {
+                    this.answer_ru = ''
+                    this.submit()
+                }
                 submit() {
                     let enWord = this.ListOfWords_En[this.counter]
                     let ruWord = this.ListOfWords_Ru[this.counter]
